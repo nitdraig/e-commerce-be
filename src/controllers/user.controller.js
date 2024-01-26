@@ -31,3 +31,25 @@ exports.loginUser = async (req, res, next) => {
     next(error);
   }
 };
+exports.getUserByID = async (req, res, next) => {
+  try {
+    const userId = req.params.userId;
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+
+    res.status(200).json({ user });
+  } catch (error) {
+    next(error);
+  }
+};
+exports.getAllUsers = async (req, res, next) => {
+  try {
+    const users = await User.find();
+    res.status(200).json({ users });
+  } catch (error) {
+    next(error);
+  }
+};
