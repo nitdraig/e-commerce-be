@@ -1,0 +1,1 @@
+Se inicia el proyecto con yarn start o npm start
